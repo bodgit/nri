@@ -9,9 +9,6 @@ on:
 jobs:
   push-store-image:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./plugins/runtime
 
     steps:
       - name: Checkout
@@ -38,7 +35,7 @@ jobs:
         uses: docker/build-push-action@263435318d21b8e681c14492fe198d362a7d2c83 # v6.18.0
         id: build
         with:
-          context: .
+          context: ./plugins/runtime
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ghcr.io/bodgit/runtime:latest
